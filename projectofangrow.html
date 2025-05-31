@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="bang">
+        <form>
+            <P class="label title">Đăng Nhập</p>
+            <label class="label chu un">Username:</label>
+            <input class="input text un" type="text" name="username" placeholder="ví dụ: Nguyễn Văn Tôn"><br/>
+            <label class="label chu pw">Password:</label>
+            <input class="input text pw" type="password" name="password"><br/>
+            <div id="submit"><input  type="submit" value="Đăng Nhập" onclick="detrong()"></div>
+            <label id="tg">bay gio la:</label>
+        </form>
+    </div>
+    <!--CODING-->
+    <style>
+        body{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:650px;
+            width: auto;
+            background-image:url("bbhh.png");
+            background-size: cover;
+        }
+        #bang{
+            position: relative;
+            width: 500px;height: 300px;
+            border: 2px solid black;border-radius: 15px;
+            background:rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 20px 20px 7px rgba(0, 0, 0, 0.5);
+           
+        }
+        .label.chu{
+            position: relative;
+            font-size:20px;
+            left: 10px;
+        }
+        .label.title{
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+            color:rgb(255, 255, 255);
+            -webkit-text-stroke: 1.35px;
+            -webkit-text-stroke-color: black;
+        }
+        #submit input{
+            position: relative;
+            margin-top: 20px;
+            margin-left: 150px;
+           padding: 14px 20px;
+        }
+       .input.text{
+        position: relative;
+        left: 5px;
+       }
+       .input.text.pw{
+        left: 9px;
+       }
+    </style>
+    <script>
+        function gettime(){
+            let d = new Date();
+            let gio = d.getHours();
+            let phut = d.getMinutes();
+            let giay = d.getSeconds();
+            document.getElementById("tg").innerText=`${gio}:${phut}:${giay}`;
+        }
+        gettime();
+        setInterval(gettime, 1000);
+        function check(daydu){
+            return !daydu || daydu.trim()==="";
+        }
+        function detrong(){
+            event.preventDefault();
+            const inputs = document.getElementsByClassName("input text");
+            const username = inputs[0].value;
+            const password = inputs[1].value;
+            if (check(username) || check(password)){
+                alert("bạn chưa nhập tên hoặc mật khẩu");
+            }
+            else{
+                alert("bạn vừa nhập thành công với tên : " + username);
+                window.location.href = "build.html";
+            }
+        }
+    </script>
+</body>
+</html>
